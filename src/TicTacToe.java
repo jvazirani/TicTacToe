@@ -15,6 +15,7 @@ import java.util.Scanner;
 public class TicTacToe
 {
     /** Board Markers **/
+    private TicTacToeViewer window;
     public static final String X_MARKER = "X";
     public static final String O_MARKER = "O";
     public static final String BLANK = "-";
@@ -56,6 +57,7 @@ public class TicTacToe
         this.winner = BLANK;
         this.winIndex = -1;
         this.winDirection = -1;
+        window = new TicTacToeViewer(this);
     }
 
     /******************** Methods You May Find Helpful ********************/
@@ -122,6 +124,7 @@ public class TicTacToe
         }
 
         this.printBoard();
+        window.repaint();
         this.isGameOver = true;
 
         // Determine if there was a winner
@@ -149,9 +152,11 @@ public class TicTacToe
     private void takeTurn(int row, int col) {
         if(this.turn % 2 == 0) {
             this.board[row][col].setMarker(X_MARKER);
+            window.repaint();
         }
         else {
             this.board[row][col].setMarker(O_MARKER);
+            window.repaint();
         }
         this.turn++;
     }
@@ -280,10 +285,17 @@ public class TicTacToe
             row++;
             System.out.println();
         }
+//        window.repaint();
     }
 
     public static void main(String[] args) {
         TicTacToe game = new TicTacToe();
         game.run();
     }
+
+
+    //TO DO
+    // call repaint() after printBoard() CHECK!!!
+    //declare the view as an instance variable
+    //initialize the view in the constructor
 }
