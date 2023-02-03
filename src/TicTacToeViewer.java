@@ -28,39 +28,31 @@ public class TicTacToeViewer extends JFrame {
 
     @Override
     public void paint(Graphics g){
-        // draw numbers
-        // draw col
-        // x is always 100
-        // y starts at 200 and increments by 200
-
-        // draw row
-        // y is always 100
-        // x starts at 100 and increments by 2
-
-        //both run 3 times
+        // Set the color and font for the numbers
         g.setColor(Color.red);
         g.setFont(new Font("Serif", Font.ITALIC + Font.BOLD, 50));
         Square[][] board = t.getBoard();
         int x = 100;
         int y = 100;
         for(int i = 0; i < board.length; i++){
+            // First row of numbers
             g.drawString("" + i, x + 100 + (i * 200), y - 5);
             for(int j = 0; j < board[0].length; j++){
+                // Draw col of numbers
                 if (j == 0){
                     g.drawString("" + i, x  - 30, y+ 100 + (i * 200));
                 }
+                // Call draw (draws the squares and images)
                 board[i][j].draw(g, this);
+                // Set color back to red for the numbers
                 g.setColor(Color.red);
+            }
+            if ((t.checkTie())){
+                g.setColor(Color.black);
+                g.drawString("Game ends in a tie!", (170), 750);
             }
         }
     }
-    //paint
-    //iterate through squares and call draw() on each
-    //draw axes
-    //display winning message
-
-
-    //.getImages()
 
 
 

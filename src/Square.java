@@ -66,33 +66,31 @@ public class Square {
 
     public void draw(Graphics g, TicTacToeViewer t){
         g.setColor(Color.black);
-        int x = (SQUARE_HEIGHT / 2) + row * SQUARE_HEIGHT;
-        int y = (SQUARE_HEIGHT / 2) + col * SQUARE_HEIGHT;
-        g.drawRect(x, y, SQUARE_HEIGHT, SQUARE_HEIGHT);
-        if (this.isWinningSquare == true){
+        int x = (SQUARE_HEIGHT / 2) + col * SQUARE_HEIGHT;
+        int y = (SQUARE_HEIGHT / 2) + row * SQUARE_HEIGHT;
+        // If there is a winning square
+        if(this.isWinningSquare){
             g.setColor(Color.green);
+            // Fill the box green
             g.fillRect(x, y, SQUARE_HEIGHT, SQUARE_HEIGHT);
             g.setColor(Color.black);
+            // If that winning square is X, print "X wins"
             if(marker.equals(TicTacToe.X_MARKER)){
-                g.drawString("X WINS!", (SQUARE_HEIGHT), 750);
+                g.drawString("X WINS!", (SQUARE_HEIGHT + 100), 750);
             }
+            // If the winning square is O, print "O wins"
             else if(marker.equals(TicTacToe.O_MARKER)){
-                g.drawString("O WINS!", (SQUARE_HEIGHT + 30), 750);
+                g.drawString("O WINS!", (SQUARE_HEIGHT + 100), 750);
             }
         }
+        // Draw the board of squares
+        g.drawRect(x, y, SQUARE_HEIGHT, SQUARE_HEIGHT);
+        // Draw the X image or the O image, depending on which one the marker equals
         if(marker.equals(TicTacToe.X_MARKER)){
             g.drawImage(t.getImages()[0], x, y, SQUARE_HEIGHT, SQUARE_HEIGHT, t);
         }
         else if(marker.equals(TicTacToe.O_MARKER)){
             g.drawImage(t.getImages()[1], x, y, SQUARE_HEIGHT, SQUARE_HEIGHT, t);
         }
-
-
     }
-
-        // params: x, y, view, graphics g, int dim
-    //use marker to decide which image to draw
-    // 1. if winning, fill green rect
-    //2. draw black rect
-    //3. draw image
 }
