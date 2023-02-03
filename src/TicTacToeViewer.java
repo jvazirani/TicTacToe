@@ -46,10 +46,11 @@ public class TicTacToeViewer extends JFrame {
                 board[i][j].draw(g, this);
                 // Set color back to red for the numbers
                 g.setColor(Color.red);
-            }
-            if ((t.checkTie())){
-                g.setColor(Color.black);
-                g.drawString("Game ends in a tie!", (170), 750);
+                if ((t.checkTie())){
+                    g.setColor(Color.black);
+                    g.drawString("Game ends in a tie!", (170), 750);
+                    g.setColor(Color.red);
+                }
             }
         }
     }
